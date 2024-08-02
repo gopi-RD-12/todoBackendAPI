@@ -1,13 +1,13 @@
 
 const express=require("express");
- const app=express();
+const app=express();
 let mongoose=require("mongoose")
 const dotEnv=require("dotenv");
 const bodyParser=require("body-parser")
 const userRouter=require("./routes/userRoutes");
 const todoRouter=require("./routes/todoRoutes");
 const cors=require("cors")
-const PORT=3000;
+const PORT= process.env.PORT || 3000;
 
 dotEnv.config();
 
@@ -25,3 +25,7 @@ app.listen(PORT,()=>{
 
 })
 
+app.get("/",async (request,response)=>{ 
+    response.send("Welcome to Todo Application")
+
+})
